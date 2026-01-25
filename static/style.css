@@ -126,3 +126,19 @@ tr:hover {
         padding: 5px 0;
     }
 }
+.menu {
+    display: grid;
+    gap: 15px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.menu button {
+    width: 100%;
+    font-size: 16px;
+    padding: 14px;
+}
+label {
+    font-weight: bold;
+    margin-top: 10px;
+}
