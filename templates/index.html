@@ -1,8 +1,24 @@
-<h1>Controle Hortifruti</h1>
+{% extends "base.html" %}
+{% block title %}Início{% endblock %}
 
-<div style="display:grid; gap:15px;">
-    <a href="/registrar/entrada"><button class="primary">Registrar Entrada</button></a>
-    <a href="/registrar/saida"><button class="primary">Registrar Saída</button></a>
-    <a href="/registrar/venda"><button class="primary">Registrar Venda</button></a>
-    <a href="/registros"><button>Ver Registros</button></a>
+{% block content %}
+<h2>Menu principal</h2>
+
+<div class="menu">
+    <a href="{{ url_for('registrar', tipo='entrada') }}">
+        <button class="primary">Registrar Entrada</button>
+    </a>
+
+    <a href="{{ url_for('registrar', tipo='saida') }}">
+        <button class="primary">Registrar Saída</button>
+    </a>
+
+    <a href="{{ url_for('registrar', tipo='venda') }}">
+        <button class="primary">Registrar Venda</button>
+    </a>
+
+    <a href="{{ url_for('registros') }}">
+        <button>Consultar Registros</button>
+    </a>
 </div>
+{% endblock %}
