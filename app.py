@@ -47,7 +47,7 @@ def apagar(registro_id):
 def registrar(tipo):
     if request.method == "POST":
         produto = request.form["produto"]
-        quantidade = float(request.form["quantidade"])
+        quantidade = request.form["quantidade"]
 
         registro = Registro(
             tipo=tipo,
