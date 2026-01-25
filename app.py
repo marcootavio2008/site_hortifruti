@@ -3,11 +3,18 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from email_utils import enviar_email
 import os
+from zoneinfo import ZoneInfo
+
+def para_brasil(dt_utc):
+    return dt_utc.replace(tzinfo=ZoneInfo("UTC")) \
+                 .astimezone(ZoneInfo("America/Sao_Paulo"))
 
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
 
 db = SQLAlchemy(app)
 
@@ -17,6 +24,10 @@ class Registro(db.Model):
     produto = db.Column(db.String(100), nullable=False)
     quantidade = db.Column(db.Float, nullable=False)
     data_registro = db.Column(db.DateTime, default=datetime.utcnow)
+
+with app.app_context():
+    db.create_all()
+
 
 @app.route("/")
 def index():
@@ -46,6 +57,8 @@ def registrar(tipo):
 @app.route("/registros")
 def registros():
     dados = Registro.query.order_by(Registro.data_registro.desc()).all()
+    for r in dados:
+        r.data_registro_br = para_brasil(r.data_registro)
     return render_template("registros.html", registros=dados)
 
 if __name__ == "__main__":
