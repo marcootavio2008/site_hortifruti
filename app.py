@@ -12,7 +12,12 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+db = SQLAlchemy(
+    app,
+    engine_options={
+        "pool_pre_ping": True
+    }
+)
 
 class Registro(db.Model):
     id = db.Column(db.Integer, primary_key=True)
