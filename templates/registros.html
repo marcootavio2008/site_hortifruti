@@ -21,7 +21,7 @@
     <tbody>
 {% for r in registros %}
 <tr>
-    <td>{{ r.data_registro.strftime("%d/%m/%Y %H:%M") }}</td>
+    <td>{{ r.data_registro_br.strftime("%d/%m/%Y %H:%M") }}</td>
     <td>{{ r.tipo }}</td>
     <td>{{ r.produto }}</td>
     <td>{{ r.quantidade }}</td>
@@ -47,5 +47,6 @@
 
 </body>
 </html>
+
 
 
