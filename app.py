@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, abort
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
@@ -32,6 +32,16 @@ with app.app_context():
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route("/apagar/<int:registro_id>", methods=["POST"])
+def apagar(registro_id):
+    registro = Registro.query.get_or_404(registro_id)
+
+    db.session.delete(registro)
+    db.session.commit()
+
+    return redirect(url_for("registros"))
+
 
 @app.route("/registrar/<tipo>", methods=["GET", "POST"])
 def registrar(tipo):
