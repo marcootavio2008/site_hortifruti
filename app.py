@@ -23,7 +23,7 @@ class Registro(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     tipo = db.Column(db.String(20), nullable=False)
     produto = db.Column(db.String(100), nullable=False)
-    quantidade = db.Column(db.Float, nullable=False)
+    quantidade = db.Column(db.String, nullable=False)
     data_registro = db.Column(db.DateTime, default=datetime.utcnow)
 
 with app.app_context():
