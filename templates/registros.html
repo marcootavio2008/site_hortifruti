@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Registros</title>
+</head>
+<body>
+
+<h1>Registros</h1>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Tipo</th>
+            <th>Produto</th>
+            <th>Quantidade</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in registros %}
+        <tr>
+            <td>{{ r.data_registro.strftime("%d/%m/%Y %H:%M") }}</td>
+            <td>{{ r.tipo }}</td>
+            <td>{{ r.produto }}</td>
+            <td>{{ r.quantidade }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="4">Nenhum registro encontrado.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+
+<a href="/">Voltar ao menu</a>
+
+</body>
+</html>
