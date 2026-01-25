@@ -1,11 +1,22 @@
-<h2>Registrar {{ tipo }}</h2>
+{% extends "base.html" %}
+{% block title %}Registrar {{ tipo|capitalize }}{% endblock %}
+
+{% block content %}
+<h2>Registrar {{ tipo|capitalize }}</h2>
 
 <form method="post">
-    Produto:<br>
-    <input name="produto" required><br><br>
+    <label>Produto</label>
+    <input type="text" name="produto" required>
 
-    Quantidade:<br>
-    <input type="number" step="0.01" name="quantidade" required><br><br>
+    <label>Quantidade</label>
+    <input name="quantidade" required>
 
-    <button type="submit">Salvar</button>
+    <button type="submit" class="primary">
+        Salvar {{ tipo|capitalize }}
+    </button>
 </form>
+
+<br>
+
+<a href="/">Voltar ao menu</a>
+{% endblock %}
