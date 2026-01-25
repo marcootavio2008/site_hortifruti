@@ -1,150 +1,128 @@
-/* ===== Reset e layout ===== */
+:root {
+    --verde: #2e7d32;
+    --verde-claro: #e8f5e9;
+    --cinza: #f4f4f4;
+    --texto: #333;
+    --borda: #ddd;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
-  background-image: url(unnamed.jpg);
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-  color: #eee;
-  background-color: black;
-  font-family: Arial, Helvetica, sans-serif}
+    margin: 0;
+    background: var(--cinza);
+    color: var(--texto);
+}
 
 header {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  display: block;
-  font-weight: 400;
-  font-style: normal;
+    background: var(--verde);
+    color: white;
+    padding: 15px;
+    text-align: center;
 }
 
-header h1 {
-  font-size: 2.6em;
-  color: #ffffff;
-  text-shadow: 0 0 18px rgb(255 0 0 / 35%), 0 0 36px rgb(122 60 255 / 45%);
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
 }
 
-nav a {
-  color: #ff6b6b;
-  text-decoration: none;
-  font-size: 1.2rem;
-  margin: 0 6px;
-  position: center;
-  text-shadow: 0 0 18px rgb(255 0 255 / 65%), 0 0 36px rgb(122 60 255 / 45%);
+footer {
+    text-align: center;
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 15px;
 }
 
-nav a:hover {
-  text-decoration: underline;
-  color: white;
+h2 {
+    margin-top: 0;
+    color: var(--verde);
 }
 
-nav{
-  background-color: rgba(20,20,20,0.8);
-  border-radius: 11px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-  padding: 10px;
-  border: 2px solid orange;
+a {
+    color: var(--verde);
+    text-decoration: none;
 }
 
-.card {
-  background: #121212;
-  border-radius: 8px;
-  padding: 18px;
-  margin-top: 18px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+a:hover {
+    text-decoration: underline;
 }
 
-footer.small {
-  font-size: 0.9em;
-  color: #bbb;
-  margin-top: 14px;
-  text-align: center;
+/* Botões */
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-/* ===== Formulário ===== */
-label {
-  display: block;
-  margin-top: 8px;
+button.primary {
+    background: var(--verde);
+    color: white;
+}
+
+button.danger {
+    background: #c62828;
+    color: white;
+}
+
+/* Formulários */
+form {
+    display: grid;
+    gap: 10px;
 }
 
 input, select {
-  width: 100%;
-  padding: 8px;
-  margin-top: 6px;
-  border-radius: 6px;
-  border: 1px solid #333;
-  background: #0f0f0f;
-  color: #eee;
+    padding: 8px;
+    border: 1px solid var(--borda);
+    border-radius: 4px;
 }
 
-button {
-  margin-top: 12px;
-  padding: 10px 14px;
-  border-radius: 8px;
-  border: none;
-  background: #ff6b6b;
-  color: #111;
-  font-weight: bold;
-  cursor: pointer;
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
 }
 
-button:hover {
-  background: #ff4040;
+th {
+    background: var(--verde-claro);
+    text-align: left;
 }
 
-.list{ margin:14px 0 0 0; padding:0; list-style:none }
-.list li{ display:flex; gap:10px; align-items:flex-start; margin:10px 0; line-height:1.8 }
-.lead{ font-size:18px; line-height:1.85; color:#f6f5ff; }
-.ico{
-    flex:0 0 26px; height:26px; border-radius:8px;
-    display:grid; place-items:center;
-    font-size:16px; font-weight:700; color:#000;
-    background:linear-gradient(135deg, #ffd18f, #ff7a00);
-    box-shadow:0 0 10px rgba(255,122,0,.35);
-  }
-.ico.purple{
-    background:linear-gradient(135deg, #d3c6ff, #7a3cff);
-    color:#fff; box-shadow:0 0 10px rgba(122,60,255,.35);
-  }
-
-/* ===== Mensagens ===== */
-.note {
-  background: #101820;
-  padding: 10px;
-  border-radius: 6px;
-  margin-top: 8px;
-  color: #fff;
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid var(--borda);
 }
 
-.error {
-  background: #3b1212;
-  color: #ffd7d7;
-  padding: 8px;
-  border-radius: 6px;
+tr:hover {
+    background: #fafafa;
 }
 
-a#downloadLink {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
-            background-color: #ff6600;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
+/* Responsivo */
+@media (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
 
-a#downloadLink:hover {
-   background-color: #e65c00;
-        }
-.qr-container {
-            margin-top: 30px;
-        }
+    th {
+        display: none;
+    }
 
-img {
-            width: 300px;
-            height: 300px;
-            border: 5px solid #ff6600;
-            border-radius: 10px;
-            box-shadow: 0 0 20px #ff6600;
-        }
+    tr {
+        margin-bottom: 10px;
+        border: 1px solid var(--borda);
+        border-radius: 4px;
+        padding: 10px;
+    }
+
+    td {
+        border: none;
+        padding: 5px 0;
+    }
+}
