@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from email_utils import enviar_email
 import os
 from zoneinfo import ZoneInfo
 
@@ -43,9 +42,6 @@ def registrar(tipo):
 
         db.session.add(registro)
         db.session.commit()
-
-        enviar_email(registro)
-
         return redirect(url_for("index"))
 
     return render_template("registrar.html", tipo=tipo)
