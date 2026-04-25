@@ -142,3 +142,8 @@ label {
     font-weight: bold;
     margin-top: 10px;
 }
+fieldset{
+    border-radius: 2px;
+    border: 1px;
+    box-shadow: 2px 3px rgba(0, 0, 0, 0.2);
+}
