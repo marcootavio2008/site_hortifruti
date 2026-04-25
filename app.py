@@ -2,12 +2,10 @@ from flask import Flask, render_template, request, redirect, url_for, abort
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
-from zoneinfo import ZoneInfo
+import pytz
 
-def para_brasil(dt_utc):
-    return dt_utc.replace(tzinfo=ZoneInfo("UTC")) \
-                 .astimezone(ZoneInfo("America/Sao_Paulo"))
-
+tz = pytz.timezone("America/Sao_Paulo")
+data_registro = datetime.now(tz)
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
@@ -43,23 +41,32 @@ def apagar(registro_id):
     return redirect(url_for("registros"))
 
 
-@app.route("/registrar/<tipo>", methods=["GET", "POST"])
+@app.route('/registrar/<tipo>', methods=['GET', 'POST'])
 def registrar(tipo):
-    if request.method == "POST":
-        produto = request.form["produto"]
-        quantidade = request.form["quantidade"]
+    if request.method == 'POST':
+        produto = request.form['produto']
+        quantidade = request.form['quantidade']
+
+        data_input = request.form.get('data_registro')
+
+        if data_input:
+            data_registro = datetime.fromisoformat(data_input)
+        else:
+            data_registro = datetime.now()
 
         registro = Registro(
             tipo=tipo,
             produto=produto,
-            quantidade=quantidade
+            quantidade=quantidade,
+            data_registro=data_registro
         )
 
         db.session.add(registro)
         db.session.commit()
-        return redirect(url_for("index"))
 
-    return render_template("registrar.html", tipo=tipo)
+        return redirect(url_for('index'))
+
+    return render_template('registrar.html', tipo=tipo, now=datetime.now().strftime("%Y-%m-%dT%H:%M")
 
 @app.route("/registros")
 def registros():
