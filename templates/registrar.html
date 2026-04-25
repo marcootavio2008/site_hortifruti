@@ -5,18 +5,21 @@
 <h2>Registrar {{ tipo|capitalize }}</h2>
 
 <form method="post">
-    <label for="produto">Produto</label>
-    <input type="text" name="produto" required>
-
-    <label for="quantidade">Quantidade</label>
-    <input name="quantidade" required>
-
-    <label for="data_registro">Data e Hora</label>
-    <input type="datetime-local" name="data_registro">
-
-    <button type="submit" class="primary">
-        Salvar {{ tipo|capitalize }}
-    </button>
+    <fieldset>
+        <legend>Registrar Ação</legend>
+        <label for="produto">Produto</label>
+        <input type="text" name="produto" required>
+    
+        <label for="quantidade">Quantidade</label>
+        <input name="quantidade" required>
+    
+        <label for="data_registro">Data e Hora</label>
+        <input type="datetime-local" name="data_registro">
+    
+        <button type="submit" class="primary">
+            Salvar {{ tipo|capitalize }}
+        </button>
+    </fieldset>
 </form>
 
 <br>
