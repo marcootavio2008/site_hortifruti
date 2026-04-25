@@ -66,7 +66,7 @@ def registrar(tipo):
 
         return redirect(url_for('index'))
 
-    return render_template('registrar.html', tipo=tipo, now=datetime.now().strftime("%Y-%m-%dT%H:%M")
+    return render_template('registrar.html', tipo=tipo, now=datetime.now().strftime("%Y-%m-%dT%H:%M"))
 
 @app.route("/registros")
 def registros():
