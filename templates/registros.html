@@ -4,41 +4,53 @@
 {% block content %}
 <h2>Registros</h2>
 
-<table>
-    <thead>
-        <tr>
-            <th>Data</th>
-            <th>Tipo</th>
-            <th>Produto</th>
-            <th>Quantidade</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for r in registros %}
-        <tr>
-            <td>{{ r.data_registro_br.strftime("%d/%m/%Y %H:%M") }}</td>
-            <td>{{ r.tipo }}</td>
-            <td>{{ r.produto }}</td>
-            <td>{{ r.quantidade }}</td>
-            <td>
-                <form method="post"
-                      action="{{ url_for('apagar', registro_id=r.id) }}"
-                      onsubmit="return confirm('Confirma exclusão?')">
-                    <button class="danger">Apagar</button>
-                </form>
-            </td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="5">Nenhum registro encontrado</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Tipo</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in registros %}
+            <tr>
+                <td data-label="Data">
+                    {{ r.data_registro_br.strftime("%d/%m/%Y %H:%M") }}
+                </td>
+
+                <td data-label="Tipo">
+                    {{ r.tipo }}
+                </td>
+
+                <td data-label="Produto">
+                    {{ r.produto }}
+                </td>
+
+                <td data-label="Quantidade">
+                    {{ r.quantidade }}
+                </td>
+
+                <td data-label="Ações">
+                    <form method="post"
+                          action="{{ url_for('apagar', registro_id=r.id) }}"
+                          onsubmit="return confirm('Confirma exclusão?')">
+                        <button class="danger">Apagar</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5">Nenhum registro encontrado</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 <br>
 <a href="/">Voltar</a>
 {% endblock %}
-
-    
