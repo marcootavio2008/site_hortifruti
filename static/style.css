@@ -116,7 +116,52 @@ legend{
     overflow-x: auto;
 }
 
-/* MOBILE */
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* segurança extra pra telas pequenas */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-family: Arial, sans-serif;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: #f4f4f4;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background: #fafafa;
+}
+
+tr:hover {
+    background: #eef6ff;
+}
+
+/* botão */
+button.danger {
+    background: #ff4d4d;
+    border: none;
+    padding: 6px 10px;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button.danger:hover {
+    background: #cc0000;
+}
+
+/* 📱 MOBILE */
 @media (max-width: 768px) {
 
     table, thead, tbody, th, td, tr {
@@ -128,31 +173,28 @@ legend{
     }
 
     tr {
-        background: white;
         margin-bottom: 15px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
         padding: 10px;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
     td {
         display: flex;
         justify-content: space-between;
-        padding: 8px;
+        padding: 8px 0;
+        border: none;
         border-bottom: 1px solid #eee;
-    }
-
-    td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        color: #555;
     }
 
     td:last-child {
         border-bottom: none;
     }
 
-    button {
-        width: 100%;
+    td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #555;
     }
 }
