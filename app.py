@@ -72,7 +72,7 @@ def registrar(tipo):
 def registros():
     dados = Registro.query.order_by(Registro.data_registro.desc()).all()
     for r in dados:
-        r.data_registro_br = para_brasil(r.data_registro)
+        r.data_registro_br = r.data_registro
     return render_template("registros.html", registros=dados)
 
 if __name__ == "__main__":
