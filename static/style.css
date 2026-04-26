@@ -83,49 +83,6 @@ input, select {
     border-radius: 4px;
 }
 
-/* Tabela */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-th {
-    background: var(--verde-claro);
-    text-align: left;
-}
-
-th, td {
-    padding: 10px;
-    border-bottom: 1px solid var(--borda);
-}
-
-tr:hover {
-    background: #fafafa;
-}
-
-/* Responsivo */
-@media (max-width: 600px) {
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-
-    th {
-        display: none;
-    }
-
-    tr {
-        margin-bottom: 10px;
-        border: 1px solid var(--borda);
-        border-radius: 4px;
-        padding: 10px;
-    }
-
-    td {
-        border: none;
-        padding: 5px 0;
-    }
-}
 .menu {
     display: grid;
     gap: 15px;
@@ -153,4 +110,49 @@ fieldset{
 
 legend{
     font-weight: 900;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        background: white;
+        margin-bottom: 15px;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+        border-bottom: 1px solid #eee;
+    }
+
+    td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #555;
+    }
+
+    td:last-child {
+        border-bottom: none;
+    }
+
+    button {
+        width: 100%;
+    }
 }
